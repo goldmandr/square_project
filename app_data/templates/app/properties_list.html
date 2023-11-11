@@ -1,0 +1,113 @@
+{% extends 'app/app_base.html' %}
+{% load static %}
+{% load ext_filters %}
+
+{% block app_content %}
+    <div class="app-content">
+        <div class="app-container-toolbar">
+            {% include 'app/components/toolbar.html' %}
+        </div>
+        {% include 'app/components/pagination.html' %}
+        <div class="app-container-list">
+
+            <!-- single element -->
+            {% for re in realestates %}
+                <div class="estate-list">
+                    <div class="row">
+                        <div class="col-md-4 col-12 mb-4">
+                            <div class="ratio-16-9">
+                                <div class="ratio-inner">
+                                    <div class="slider-container">
+                                        <div class="slider-elements">
+                                            {% with photo_count=re.photo_set.count %}
+                                            {% for photo in re.photo_set.all|slice:":5" %}
+                                                <div><img src="{{ photo.url }}" data-fancybox="gallery_{{ forloop.parentloop.counter }}"></div>
+                                                {% if forloop.last %}
+                                                    <div>
+                                                        <img src="{{ photo.url }}" data-fancybox="gallery_{{ forloop.parentloop.counter }}">
+                                                        <a href="{% url 'estate' pk=re.pk %}" class="estate-list-more-photo">
+                                                            <span>Смотреть все фото ({{ photo_count }})</span>
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            {% empty %}
+                                                <div>
+                                                    <a href="#" class="estate-list-more-photo">
+                                                        <span>Нет фото</span>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+                                            {% endwith %}
+                                        </div>
+                                        <div class="slider-dots-container"></div>
+                                        <div class="slider-arrow-left">
+                                            <div>
+                                                <img width="100%" height="auto" src="{% static 'square/icons/arrow_backward.svg' %}">
+                                            </div>
+                                        </div>
+                                        <div class="slider-arrow-right">
+                                            <div>
+                                                <img width="100%" height="auto" src="{% static 'square/icons/arrow_forward.svg' %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 estate-list-body mb-4">
+                            <a href="{% url 'estate' pk=re.pk %}" class="estate-list-title mb-1">{{ re.title }}</a>
+                            {% with address_elem=re.address_set.first %}
+                                <div class="estate-list-address mb-3">
+                                    {{ address_elem|ext_getstrvalues|slice:"1:7"|ext_removeempty|join:", " }}
+                                </div>
+                                {% if address_elem.metro %}
+                                    <div class="estate-list-address d-flex align-items-center mb-3">
+                                        <img class="icon-std" src="{% static 'square/icons/metro.svg' %}">
+                                        <span class="ms-2">{{ address_elem.metro }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                            {% with description=re.description %}
+                                {% if description %}
+                                    <div class="estate-list-description-wrapper">
+                                        <div class="estate-list-description mb-4">{{ description }}</div>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                            {% with price_elem=re.price_set.first %}
+                                {% if price_elem is not None %}
+                                    <div class="estate-list-square">{{ price_elem.area }} м²</div>
+                                {% endif %}
+                            {% endwith %}
+                        </div>
+                        <div class="col-md-3 col-12 d-flex">
+                            <div class="ms-md-auto ms-md-0 ms-auto">
+                                {% with price_elem=re.price_set.first %}
+                                    {% if price_elem is not None %}
+                                        <div class="estate-list-price text-end mb-1">{{ price_elem.price }}</div>
+                                    {% endif %}
+                                {% endwith %}
+                                {% with pricepersquaremeter=re.pricepersquaremeter %}
+                                    {% if pricepersquaremeter %}
+                                        <div class="estate-list-price-per-square text-end mb-2">{{ pricepersquaremeter }}/м²</div>
+                                    {% endif %}
+                                {% endwith %}
+                                <div class="text-end">
+                                    <button class="button-outlined-small">
+                                        <span>В избранное</span>
+                                        <svg class="icon-std ms-1" viewBox="0 0 18 18">
+                                            <use class="class-use" href="{% static 'square/icons/like.svg' %}#likeSVG"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- end of single element  -->
+        </div>
+
+        {% include 'app/components/pagination.html' %}
+    </div>
+{% endblock %}

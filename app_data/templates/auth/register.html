@@ -1,0 +1,20 @@
+{% extends 'auth/auth_base.html' %}
+
+{% block auth_actions %}
+    <a href="#registerFormDialog" class="button-primary auth-button-primary mb-3">Зарегистрироваться</a>
+    <span class="line-text d-block">Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></span>
+{% endblock %}
+
+{% block auth_form %}
+    <div id="registerFormDialog" class="dialog-overlay">
+        <a href="#"></a>
+        <form class="dialog-window" method="post">
+            {% csrf_token %}
+            <h4 class="auth-dialog-title">Регистрация</h4>
+            <div class="auth-form-fields">
+                {{ form.as_p }}
+            </div>
+            <button class="button-primary w-100">Зарегистрироваться</button>
+        </form>
+    </div>
+{% endblock %}

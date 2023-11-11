@@ -1,0 +1,38 @@
+.messages {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    text-align: center;
+
+    li {
+        display: none;
+        align-items: center;
+        border-radius: $border_radius;
+        padding: 0.5rem;
+
+        transform: translateY(calc(100% + 1rem));
+        transition: transform $trans_time ease;
+
+        &.visible {
+            display: inline-flex;
+        }
+
+        &.active {
+            transform: translateY(0);
+        }
+
+        &.error {
+            background-color: $danger_color;
+        }
+
+        &.success {
+            background-color: $primary_color;
+        }
+    }
+    
+    &-close {
+        cursor: pointer;
+    }
+}

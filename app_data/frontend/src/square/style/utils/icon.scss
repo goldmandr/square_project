@@ -1,0 +1,42 @@
+.icon {
+    $parent: &;
+
+    background-size: contain;
+
+    &-big {
+        @extend #{$parent};
+
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+    &-std {
+        @extend #{$parent};
+
+        width: 0.85rem;
+        height: 0.85rem;
+    }
+}
+
+.img {
+    &-bg {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &-contain {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &-full-width {
+        width: 100%;
+        height: auto;
+    }
+
+    &-full-height {
+        width: auto;
+        height: 100%;
+    }
+}

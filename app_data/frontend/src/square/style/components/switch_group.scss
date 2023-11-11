@@ -1,0 +1,34 @@
+.switch {
+    &-group {
+        display: inline-flex;
+    }
+
+    &-link {
+        display: block;
+        border: solid 1px $text_color_light_variant;
+
+        &:first-child {
+            border-top-left-radius: $small_border_radius;
+            border-bottom-left-radius: $small_border_radius;
+        }
+
+        &:last-child {
+            border-top-right-radius: $small_border_radius;
+            border-bottom-right-radius: $small_border_radius;
+        }
+
+        .class-use {
+            fill: $text_color_light_variant;
+            stroke: $text_color_light_variant;
+        }
+
+        &:hover, &.active {
+            background-color: $text_color_light_variant;
+
+            .class-use {
+                fill: $background_color;
+                stroke: $background_color;
+            }
+        }
+    }
+}

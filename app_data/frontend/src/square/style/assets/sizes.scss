@@ -1,0 +1,68 @@
+$input_padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+$border_radius: 0.75rem;
+$button_border_radius: 0.4rem;
+$small_border_radius: 0.25rem;
+
+@mixin screen-xs {
+    @media (max-width: 575.98px) {
+        @content;
+    }
+}
+
+@mixin screen-sm {
+    @media (min-width: 576px) {
+        @content;
+    }
+}
+
+@mixin screen-md {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin screen-lg {
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin screen-xl {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin screen-before-sm {
+    @media (max-width: 575.9px) {
+        @content;
+    }
+}
+
+@mixin screen-before-md {
+    @media (max-width: 767.9px) {
+        @content;
+    }
+}
+
+@mixin screen-before-lg {
+    @media (max-width: 991.9px) {
+        @content;
+    }
+}
+
+@mixin screen-before-xl {
+    @media (max-width: 1199.9px) {
+        @content;
+    }
+}
+
+@mixin padding-page-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @include screen-md {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+}

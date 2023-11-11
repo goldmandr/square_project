@@ -1,0 +1,45 @@
+{% load static %}
+
+<form class="filter-wrapper" data-role="filter">
+    <div class="filter-container">
+        <div class="filter-control control-1 filter-select">
+            <span>Тип</span>
+            <img src="{% static 'square/icons/expand.svg' %}" class="ms-auto">
+            <input type="hidden" name="type" value="{% if request.GET.type %}{{ request.GET.type }}{% endif %}">
+        </div>
+        <div class="filter-control control-2 filter-select">
+            <span>Площадь</span>
+            <img src="{% static 'square/icons/expand.svg' %}" class="ms-auto">
+            <div class="filter-control-context">
+                <label>
+                    <input type="number" name="square_from" placeholder="от" value="{% if request.GET.square_from %}{{ request.GET.square_from }}{% endif %}">
+                    <span>м²</span>
+                </label>
+                <label>
+                    <input type="number" name="square_to" placeholder="до" value="{% if request.GET.square_to %}{{ request.GET.square_to }}{% endif %}">
+                    <span>м²</span>
+                </label>
+            </div>
+        </div>
+        <div class="filter-control control-3 filter-select">
+            <span>Цена</span>
+            <img src="{% static 'square/icons/expand.svg' %}" class="ms-auto">
+            <div class="filter-control-context">
+                <label>
+                    <input type="number" name="cost_from" placeholder="от" value="{% if request.GET.cost_from %}{{ request.GET.cost_from }}{% endif %}">
+                    <span>₽</span>
+                </label>
+                <label>
+                    <input type="number" name="cost_to" placeholder="до" value="{% if request.GET.cost_to %}{{ request.GET.cost_to }}{% endif %}">
+                    <span>₽</span>
+                </label>
+            </div>
+        </div>
+        <div class="filter-control control-4 filter-text flex-grow-1">
+            <input type="text" name="address" placeholder="Адрес, город, метро, район, Ж/Д станция" value="{% if request.GET.address %}{{ request.GET.address }}{% endif %}">
+        </div>
+    </div>
+    <button type="submit" class="filter-apply button-primary-small">
+        Применить фильтр
+    </button>
+</form>

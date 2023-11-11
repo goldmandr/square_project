@@ -1,0 +1,51 @@
+{% load static %}
+
+{% with url_name=request.resolver_match.url_name %}
+<div class="page-pagination">
+    {% if page_obj.number > 1 %}
+        <a href="{% url url_name page=page_obj.number|add:'-1' %}?{{ request.META.QUERY_STRING }}" class="page-pagination-button me-3">
+            <span><img src="{% static 'square/icons/arrow_backward.svg' %}"></span><span class="d-md-inline d-none ms-2">Предыдущая</span>
+        </a>
+    {% endif %}
+    <div class="page-pagination-num-wrapper">
+        <a href="{% url url_name page=pages_list.0 %}?{{ request.META.QUERY_STRING }}" class="page-pagination-num {% if page_obj.number == pages_list.0 %}active{% endif %}">
+            <span>{{ pages_list.0 }}</span>
+        </a>
+        {% if page_obj.number >= 4 %}
+            <span class="page-pagination-num">
+                <span>...</span>
+            </span>
+        {% endif %}
+        {% if pages_list.1 %}
+            <a href="{% url url_name page=pages_list.1 %}?{{ request.META.QUERY_STRING }}" class="page-pagination-num {% if page_obj.number == pages_list.1 %}active{% endif %}">
+                <span>{{ pages_list.1 }}</span>
+            </a>
+        {% endif %}
+        {% if pages_list.2 %}
+            <a href="{% url url_name page=pages_list.2 %}?{{ request.META.QUERY_STRING }}" class="page-pagination-num {% if page_obj.number == pages_list.2 %}active{% endif %}">
+                <span>{{ pages_list.2 }}</span>
+            </a>
+        {% endif %}
+        {% if pages_list.3 %}
+            <a href="{% url url_name page=pages_list.3 %}?{{ request.META.QUERY_STRING }}" class="page-pagination-num {% if page_obj.number == pages_list.3 %}active{% endif %}">
+                <span>{{ pages_list.3 }}</span>
+            </a>
+        {% endif %}
+        {% if paginator.num_pages > 5 and page_obj.number < paginator.num_pages|add:'-2' %}
+            <span class="page-pagination-num">
+                <span>...</span>
+            </span>
+        {% endif %}
+        {% if pages_list.4 %}
+            <a href="{% url url_name page=pages_list.4 %}?{{ request.META.QUERY_STRING }}" class="page-pagination-num {% if page_obj.number == pages_list.4 %}active{% endif %}">
+                <span>{{ pages_list.4 }}</span>
+            </a>
+        {% endif %}
+    </div>
+    {% if page_obj.number < paginator.num_pages %}
+        <a href="{% url url_name page=page_obj.number|add:'1' %}?{{ request.META.QUERY_STRING }}" class="page-pagination-button ms-3">
+            <span class="d-md-inline d-none me-2">Следующая</span><span><img src="{% static 'square/icons/arrow_forward.svg' %}"></span>
+        </a>
+    {% endif %}
+</div>
+{% endwith %}

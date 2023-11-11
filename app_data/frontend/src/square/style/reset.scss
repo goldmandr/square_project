@@ -1,0 +1,118 @@
+@include screen-xs {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@include screen-sm {
+    :root {
+        font-size: 14px;
+    }
+}
+
+@include screen-md {
+    :root {
+        font-size: 16px;
+    }
+}
+
+@include screen-lg {
+    :root {
+        font-size: 20px;
+    }
+}
+
+@include screen-xl {
+    :root {
+        font-size: 20px;
+    }
+}
+
+h1 {
+    font-size: 6.3125rem;
+}
+
+h2 {
+    font-size: 3.9375rem;
+}
+
+h3 {
+    font-size: 3.125rem;
+}
+
+h4 {
+    font-size: 2.25rem;
+}
+
+h5 {
+    font-size: 1.5625rem;
+}
+
+h6 {
+    font-size: 1.3125rem;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    color: $text_color;
+    background-color: #00000000;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+input {
+    border: none;
+}
+
+input, button:active, button:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    color: $text_color;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a, a:hover {
+    color: $text_color;
+    text-decoration: none;
+}
+
+/*
+html {
+    animation: bad_anim  4s infinite ease-in-out;
+}
+
+@keyframes bad_anim {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(1800deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+*/

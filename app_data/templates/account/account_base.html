@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block add_style %}
+    <link rel="stylesheet" href="{% static 'account/bundles/account.bundle.css' %}">
+{% endblock %}
+
+{% block add_scripts %}
+    <script src="{% static 'account/bundles/account.bundle.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {% include 'components/header_back.html' %}
+
+    {% block app_content %}
+    {% endblock %}
+{% endblock %}

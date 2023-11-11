@@ -1,0 +1,26 @@
+{% load static %}
+
+<header>
+    {% include 'components/header_cap.html' %}
+    <div class="app-header-toolbar">
+        <button id="showFilters" class="button-outlined square">
+            <svg class="icon-big" viewBox="0 0 28 28">
+                <use class="class-use" href="{% static 'square/icons/filter.svg' %}#filterSVG"></use>
+            </svg>
+        </button>
+        <div class="app-header-toolbar-group">
+            <button class="button-outlined">
+                <svg class="icon-std me-1" viewBox="0 0 18 18">
+                    <use class="class-use" href="{% static 'square/icons/location.svg' %}#locationSVG"></use>
+                </svg>
+                <span>Карта</span>
+            </button>
+            <button class="button-outlined">
+                <span>Избранное</span>
+                <svg class="icon-std ms-1" viewBox="0 0 18 18">
+                    <use class="class-use" href="{% static 'square/icons/like.svg' %}#likeSVG"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>

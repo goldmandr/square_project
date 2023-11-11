@@ -1,0 +1,8 @@
+.line-text {
+    font-size: 0.7rem;
+    font-weight: 800;
+
+    & > a:hover {
+        text-decoration: underline;
+    }
+}

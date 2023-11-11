@@ -1,0 +1,40 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title>ПЛОЩАДЬ | {{ page_title }}</title>
+
+        {% include 'components/font_link.html' %}
+
+        <link rel="stylesheet" href="{% static 'libs/bundles/libs.bundle.css' %}">
+        <link rel="stylesheet" href="{% static 'square/bundles/square.bundle.css' %}">
+        {% block add_style %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+
+        {% if messages %}
+            <ul id="msgBlock" class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">
+                        <span>{{ message }}</span>
+                        <span class="messages-close ms-2">
+                            <img src="{% static 'square/icons/close_white.svg' %}" alt="">
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <script src="{% static 'libs/bundles/libs.bundle.js' %}"></script>
+        <script src="{% static 'square/bundles/square.bundle.js' %}"></script>
+        {% block add_scripts %}
+        {% endblock %}
+    </body>
+</html>

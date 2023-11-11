@@ -1,0 +1,9 @@
+@import 'assets/imports';
+@import 'components/imports';
+@import 'utils/imports';
+@import 'reset.scss';
+
+
+body {
+    background: $background_color;
+}

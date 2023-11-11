@@ -1,0 +1,271 @@
+@import '../../square/style/assets/imports';
+
+.estate {
+    &-list {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        border-bottom: solid 2px $text_color_secondary;
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-title {
+            display: block;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: $primary_color;
+
+            &:hover {
+                text-decoration: underline;
+                color: $primary_color;
+            }
+        }
+
+        &-address {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+
+        &-description {
+            flex-grow: 1;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: $text_color_variant;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        &-square {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        &-price {
+            font-weight: 700;
+        }
+
+        &-price-per-square {
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: $text_color_variant;
+        }
+
+        &-more-photo {
+            display: flex;
+            position: absolute;
+            top: 0; bottom: 0; left: 0; right: 0;
+
+            background-color: #000000CC;
+            & > span {
+                margin: auto;
+                font-size: 1.25rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &-grid {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        &-title {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+            &.small {
+                -webkit-line-clamp: 1;
+            }
+        }
+
+        &-address {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+
+        &-description {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: $text_color_variant;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        &-data {
+            display: flex;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.7rem;
+        }
+    }
+
+    &-component {
+        &-data-surface {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+
+            border-radius: $border_radius;
+        }
+
+        &-title {
+            font-family: 'GT Eesti Pro Display', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: $primary_color;
+            margin-bottom: 0.25rem;
+        }
+
+        &-price {
+            font-family: 'GT Eesti Pro Display', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        &-price-per-square {
+            font-family: 'GT Eesti Pro Display', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: $text_color_variant;
+        }
+
+        &-address {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+
+        &-params {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.7rem;
+            border-bottom: solid 1px $text-color_secondary;
+            padding: 1.2rem 0 0.5rem 0;
+            margin-bottom: 2rem;
+
+            & > li {
+                & >div {
+                    font-family: 'GT Eesti Pro Display', sans-serif;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    margin-bottom: 0.25rem;
+                }
+
+                & > span {
+                    font-family: 'GT Eesti Pro Display', sans-serif;
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                    color: $text_color_variant;
+                }
+            }
+        }
+
+        &-section-title {
+            font-family: 'GT Eesti Pro Display', sans-serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        &-description {
+            font-family: 'GT Eesti Pro Display', sans-serif;
+            font-weight: 500;
+            color: $text_color_variant;
+            margin-bottom: 2rem;
+        }
+
+        &-table {
+            margin-bottom: 2rem;
+
+            & > table {
+                width: 100%;
+
+                & > tbody {
+
+                    & > tr {
+                        border-bottom: solid 1px $text-color_secondary;
+
+                        & > th {
+                            padding: 0.5rem 0 0.5rem 0;
+                            font-family: 'GT Eesti Pro Display', sans-serif;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                        }
+
+                        & > td {
+                            padding: 0.5rem 0 0.5rem 0;
+                            font-family: 'GT Eesti Pro Display', sans-serif;
+                            font-size: 0.8rem;
+                            font-weight: 400;
+                            color: $text_color_variant;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-resource {
+            &-button {
+                position: relative;
+            }
+
+            &-list {
+                position: absolute;
+                overflow: hidden;
+
+                max-height: 0;
+                opacity: 0.0;
+                transition: opacity $trans_time linear, max-height $trans_time linear;
+                &.show {
+                    max-height: 9999px;
+                    opacity: 1.0;
+                }
+                top: calc(100% + 0.5rem); right: 0;
+
+                background-color: $background_color;
+                color: $text_color;
+                box-shadow: 0 2px 8px #000020CC;
+
+                width: 12rem;
+
+                a, span {
+                    display: flex;
+                    padding: 0.5rem;
+                    height: 3rem;
+                    box-sizing: content-box;
+                    &:not(:last-child) {
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                    transition: background-color $trans_time linear;
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.1);
+                    }
+
+                    img {
+                        margin: auto;
+                        background-size: contain;
+                    }
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,23 @@
+@mixin ratio-settings {
+    position: relative;
+}
+
+.ratio {
+    &-1-1 {
+        @include ratio-settings;
+        padding-bottom: 100%;
+    }
+
+    &-16-9 {
+        @include ratio-settings;
+        padding-bottom: 56.25%;
+    }
+
+    &-inner {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}

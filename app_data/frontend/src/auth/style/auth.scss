@@ -1,0 +1,101 @@
+@import '../../square/style/assets/imports';
+
+.auth {
+    &-title {
+        text-align: center;
+        line-height: 100%;
+        letter-spacing: 0.17em;
+        font-size: 3rem;
+        font-weight: 800;
+        padding: 3rem 0 3rem 0;
+    }
+
+    &-descr {
+        width: 100%;
+        max-width: 1050px;
+
+        text-align: center;
+        line-height: 100%;
+        font-size: 1.8rem;
+        font-weight: 600;
+        padding: 0.3rem;
+        margin: 0 auto;
+
+        color: $text_color_light_variant;
+    }
+
+    &-actions {
+        text-align: center;
+        padding: 2.4rem 0 0.9rem 0;
+        margin-bottom: 8rem;
+    }
+
+    &-button-primary {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    &-partners {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 140px 140px 140px 140px;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    @include screen-lg {
+        &-partners {
+            padding: 0 3.3rem 0 3.3rem;
+
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 140px 140px;
+        }
+    }
+
+    &-dialog-title {
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    &-form-fields {
+        margin-bottom: 2.25rem;
+
+        & > p {
+            margin-bottom: 1rem;
+        }
+
+        & label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        & input {
+            width: 100%;
+            border-radius: $border_radius;
+            padding: 1rem;
+            background-color: $text_color_light_variant;
+            color: $background_color;
+        }
+
+        & > .errorlist li {
+            color: $danger_color;
+            margin-bottom: 1rem;
+
+            &::before {
+                content: '* ';
+            }
+        }
+
+        & .helptext {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        & > ul {
+            font-size: 0.8rem;
+        }
+    }
+}

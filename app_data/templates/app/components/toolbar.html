@@ -1,0 +1,23 @@
+{% load static %}
+{% load ext_filters %}
+
+<div class="d-flex align-items-center">
+    <div class="switch-group me-4">
+        <a href="{% url 'properties-grid-page' page=page_obj.number %}?{{ request.META.QUERY_STRING }}" class="switch-link {% if list_type == 'grid' %}active{% endif %}">
+            <svg class="icon-big" viewBox="0 0 37 30">
+                <use class="class-use" href="{% static 'square/icons/grid_view.svg' %}#gridViewSVG"></use>
+            </svg>
+        </a>
+        <a href="{% url 'properties-list-page' page=page_obj.number %}?{{ request.META.QUERY_STRING }}" class="switch-link {% if list_type == 'list' %}active{% endif %}">
+            <svg class="icon-big" viewBox="0 0 39 32">
+                <use class="class-use" href="{% static 'square/icons/list_view.svg' %}#listViewSVG"></use>
+            </svg>
+        </a>
+    </div>
+
+    <select id="estimateTypeOrdering" class="select-outlined">
+        {% for option in ordering_options %}
+            <option value="{{ option.value }}" {% if request.GET.ordering == option.value %}selected="selected"{% endif %}>{{ option.label }}</option>
+        {% endfor %}
+    </select>
+</div>

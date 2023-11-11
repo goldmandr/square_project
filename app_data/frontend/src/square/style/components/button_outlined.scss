@@ -1,0 +1,92 @@
+.button-outlined {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $button_border_radius;
+    border: solid 2px $text_color;
+    min-width: 10.5rem;
+    padding: 1rem;
+
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 400;
+
+    background-color: transparent;
+    transition: background-color $trans_time linear, color $trans_time linear;
+
+    &.square {
+        min-width: 3.5rem;
+        padding: 0.85rem;
+    }
+
+    .class-use {
+        fill: $text_color;
+        stroke: $text_color;
+    }
+
+    &:hover, &.checked {
+        background-color: $text_color;
+
+        span {
+            color: $background_color;
+        }
+
+        .class-use {
+            fill: $background_color;
+            stroke: $background_color;
+        }
+    }
+
+    &:hover.checked {
+        background-color: $background_color;
+
+        span {
+            color: $text_color;
+        }
+
+        .class-use {
+            fill: $text_color;
+            stroke: $text_color;
+        }
+    }
+}
+
+.button-outlined-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $button_border_radius;
+    border: solid 2px $text_color_variant;
+    min-width: 7.5rem;
+    padding: 0.5rem;
+
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 400;
+
+    background-color: transparent;
+    transition: background-color $trans_time linear, color $trans_time linear;
+
+    &.square {
+        min-width: 1.25rem;
+        padding: 0.5rem;
+    }
+
+    .class-use {
+        fill: $text_color_light_variant;
+        stroke: $text_color_light_variant;
+    }
+
+    &:hover, &.checked {
+        background-color: $text_color_light_variant;
+
+        span {
+            color: $background_color;
+        }
+
+        .class-use {
+            fill: $background_color;
+            stroke: $background_color;
+        }
+    }
+}

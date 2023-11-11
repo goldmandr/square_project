@@ -1,0 +1,39 @@
+@import '../../square/style/assets/imports';
+
+.app {
+    &-header-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        @include padding-page-content;
+        margin-bottom: 1.5rem;
+
+        &-group {
+            display: flex;
+            gap: 0.8rem;
+        }
+    }
+
+    &-content {
+        padding-bottom: 1.5rem;
+        @include padding-page-content;
+    }
+
+    &-container {
+        &-toolbar {
+            width: 100%;
+            max-width: 1400px;
+            margin: 4.5rem auto 0 auto;
+        }
+
+        &-list {
+           width: 100%;
+           max-width: 1400px;
+           margin: 0 auto;
+        }
+
+        &-grid {
+           width: 100%;
+        }
+    }
+}

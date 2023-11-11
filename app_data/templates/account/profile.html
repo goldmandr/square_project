@@ -1,0 +1,36 @@
+{% extends 'account/account_base.html' %}
+{% load static %}
+
+{% block app_content %}
+    <div class="account-content">
+        <div class="account-container">
+            <div class="account-title">Ваш профиль</div>
+            <div class="account-border">
+                <div class="account-data-title">Ваши данные</div>
+                <div>
+                    <div class="account-field-title">Почта: </div>
+                    <div class="account-field-text">{{ email }}</div>
+                </div>
+            </div>
+            <div class="account-pass-change-block">
+                <a href="#changePasswordDialog" class="button-primary account-button-primary">Сменить пароль</a>
+                <a href="{% url 'logout' %}" class="account-logout ms-auto">Выйти из аккаунта</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="changePasswordDialog" class="dialog-overlay">
+        <a href="#"></a>
+        <form class="dialog-window account-dialog-window" method="post" action="{% url 'profile-change-view' %}">
+            {% csrf_token %}
+            <a href="#" class="account-dialog-exit"><img src="{% static 'square/icons/account_exit.svg' %}"></a>
+            <h4 class="account-dialog-title">Вход в кабинет</h4>
+            <div class="account-form-fields">
+                {{ change_password_form.as_p }}
+            </div>
+            <div class="text-center">
+                <button class="button-primary py-2 px-4">Сохранить</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

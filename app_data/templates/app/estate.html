@@ -1,0 +1,191 @@
+{% extends 'app/app_full_page_base.html' %}
+{% load static %}
+{% load ext_filters %}
+
+{% block app_content %}
+    <div class="app-content">
+        <div class="app-container-list">
+
+            <section>
+                <div class="ratio-16-9 mb-4">
+                    <div class="ratio-inner">
+                        <div class="slider-container touches">
+                            <div class="slider-elements">
+                                {% with photo_count=re.photo_set.count %}
+                                {% for photo in re.photo_set.all %}
+                                    <div><img src="{{ photo.url }}" data-fancybox="gallery"></div>
+                                {% empty %}
+                                    <div>
+                                        <a href="#" class="estate-list-more-photo">
+                                            <span>Нет фото</span>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                                {% endwith %}
+                            </div>
+                            <div class="slider-counter"></div>
+                            <div class="slider-arrow-left">
+                                <div>
+                                    <img width="100%" height="auto" src="{% static 'square/icons/arrow_backward.svg' %}">
+                                </div>
+                            </div>
+                            <div class="slider-arrow-right">
+                                <div>
+                                    <img width="100%" height="auto" src="{% static 'square/icons/arrow_forward.svg' %}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="estate-component-data-surface">
+                    <div class="d-flex flex-md-row flex-column">
+                        <div class="flex-grow-1 mb-md-0 mb-4">
+                            <div class="estate-component-title">{{ re.title }}</div>
+                            {% with price_elem=re.price_set.first %}
+                                {% if price_elem is not None %}
+                                    <div class="estate-component-price">{{ price_elem.price }}</div>
+                                {% endif %}
+                            {% endwith %}
+                            {% with pricepersquaremeter=re.pricepersquaremeter %}
+                                {% if pricepersquaremeter %}
+                                    <div class="estate-component-price-per-square mb-4">{{ pricepersquaremeter }}/м²</div>
+                                {% endif %}
+                            {% endwith %}
+
+                            {% with address_elem=re.address_set.first %}
+                                <div class="estate-component-address mb-2">{{ address_elem|ext_getstrvalues|slice:"1:7"|ext_removeempty|join:", " }}</div>
+                                {% if address_elem.metro %}
+                                    <div class="estate-component-address d-flex align-items-center">
+                                        <img class="icon-std" src="{% static 'square/icons/metro.svg' %}">
+                                        <span class="ms-2">{{ address_elem.metro }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                        </div>
+                        <div class="d-flex flex-md-column flex-row align-items-stretch">
+                            <button class="button-outlined mb-md-4 mb-0">
+                                <span>В избранное</span>
+                                <svg class="icon-std ms-1" viewBox="0 0 18 18">
+                                    <use class="class-use" href="{% static 'square/icons/like.svg' %}#likeSVG"></use>
+                                </svg>
+                            </button>
+                            <button class="estate-component-resource-button button-primary-tool mt-md-auto mt-0 ms-md-0 ms-auto">
+                                <span>Перейти</span>
+                                <svg class="icon-std ms-1" viewBox="0 0 16 9">
+                                    <use class="class-use" href="{% static 'square/icons/expand_non_filled.svg' %}#expandSVG"></use>
+                                </svg>
+                                <div class="estate-component-resource-list">
+                                    {% with direct_link=re.directlink.link %}
+                                    {% if direct_link is not None %}
+                                        <!--<a href="#" target="_blank">
+                                            <img style="width:auto; height: 3rem" src="{% static 'square/images/cian_logo.png' %}">
+                                        </a>-->
+                                        {% if resource_provider == 'dom_rf' %}
+                                            <a href="{{ direct_link }}" target="_blank">
+                                                <img style="width:auto; height: 3rem" src="{% static 'square/images/dom-rf_logo.svg' %}">
+                                            </a>
+                                        {% endif %}
+                                        <!--<a href="#" target="_blank">
+                                            <img style="width:100%; height: auto" src="{% static 'square/images/invest-moscow_logo.svg' %}">
+                                        </a>-->
+                                        {% if resource_provider == 'kf' %}
+                                            <a href="{{ direct_link }}" target="_blank">
+                                                <img style="width:auto; height: 3rem" src="{% static 'square/images/knight_frank_logo.png' %}">
+                                            </a>
+                                        {% endif %}
+                                        <!--<a href="#" target="_blank">
+                                            <img style="width:auto; height: 3rem" src="{% static 'square/images/osobnyaki_logo.svg' %}">
+                                        </a>-->
+                                        <!--<a href="#" target="_blank">
+                                            <img style="width:100%; height: auto" src="{% static 'square/images/rad_logo.svg' %}">
+                                        </a>-->
+                                        <!--<a href="#" target="_blank">
+                                            <img style="width:auto; height: 3rem" src="{% static 'square/images/river_logo.svg' %}">
+                                        </a>-->
+                                        <!--<a href="#" target="_blank">
+                                            <img style="width:100%; height: auto" src="{% static 'square/images/trast_logo.svg' %}">
+                                        </a>-->
+                                    {% endif %}
+                                    {% endwith %}
+                                    {% if resource_provider is None %}
+                                        <span>
+                                            Нет прямой ссылки
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <ul class="estate-component-params">
+                    {% if re.type %}
+                        <li>
+                            <div>{{ re.type }}</div>
+                            <span>Тип объекта</span>
+                        </li>
+                    {% endif %}
+                    <!--<li>
+                        <div>Аренда</div>
+                        <span>Тип сделки</span>
+                    </li>-->
+                </ul>
+            </section>
+
+            {% if re.description %}
+                <section>
+                    <div class="estate-component-section-title">Описание</div>
+                    <div class="estate-component-description">
+                        {{ re.description }}
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if re.price_set.count > 0 %}
+                <section>
+                    <div class="estate-component-section-title">Варианты помещений</div>
+                    <div class="estate-component-table">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Стоимость (руб.)</th>
+                                    <th>м²</th>
+                                    <th>руб/м²</th>
+                                </tr>
+                                {% for price_elem in re.price_set.all %}
+                                    <tr>
+                                        <td>{{ price_elem.price }}</td>
+                                        <td>{{ price_elem.area }} м²</td>
+                                        {% if re.pricepersquaremeter %}
+                                            <td>{{ re.pricepersquaremeter }}/м²</td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            {% endif %}
+
+            <section>
+                <div class="estate-component-section-title">Расположение</div>
+                {% with address_elem=re.address_set.first %}
+                    <div class="estate-component-address mb-2">{{ address_elem|ext_getstrvalues|slice:"1:7"|ext_removeempty|join:", " }}</div>
+                    {% if address_elem.metro %}
+                        <div class="estate-component-address d-flex align-items-center">
+                            <img class="icon-std" src="{% static 'square/icons/metro.svg' %}">
+                            <span class="ms-2">{{ address_elem.metro }}</span>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            </section>
+        </div>
+    </div>
+{% endblock %}

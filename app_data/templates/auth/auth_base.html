@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block add_style %}
+    <link rel="stylesheet" href="{% static 'auth/bundles/auth.bundle.css' %}">
+{% endblock %}
+
+{% block add_scripts %}
+    <script src="{% static 'auth/bundles/auth.bundle.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="mx-4 pb-4">
+        <h1 class="auth-title">
+            {{ app_name_ru }}
+        </h1>
+
+        <section class="auth-descr">
+            Агрегатор для поиска коммерческой недвижимости, который объединяет информацию об объектах со всех ниже перечисленных источников.
+        </section>
+
+        <section class="auth-actions">
+            {% block auth_actions %}
+            {% endblock %}
+        </section>
+
+        <section class="auth-partners">
+            <div class="img-contain mx-5" style="background-image: url('{% static 'square/images/river_logo.svg' %}')"></div>
+            <div class="img-contain mx-5" style="background-image: url('{% static 'square/images/rad_logo.svg' %}')"></div>
+            <div class="img-contain mx-5" style="background-image: url('{% static 'square/images/trast_logo.svg' %}')"></div>
+            <div class="img-contain mx-5 my-4" style="background-image: url('{% static 'square/images/knight_frank_logo.png' %}')"></div>
+            <div class="img-contain mx-5" style="background-image: url('{% static 'square/images/cian_logo.png' %}')"></div>
+            <div class="img-contain mx-5" style="background-image: url('{% static 'square/images/invest-moscow_logo.svg' %}')"></div>
+            <div class="img-contain mx-5" style="background-image: url('{% static 'square/images/dom-rf_logo.svg' %}')"></div>
+            <div class="img-contain mx-5" style="background-image: url('{% static 'square/images/osobnyaki_logo.svg' %}')"></div>
+        </section>
+    </div>
+
+    {% block auth_form %}
+    {% endblock %}
+{% endblock %}
+
+

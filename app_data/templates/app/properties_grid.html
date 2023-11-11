@@ -1,0 +1,88 @@
+{% extends 'app/app_base.html' %}
+{% load static %}
+{% load ext_filters %}
+
+{% block app_content %}
+    <div class="app-content">
+        <div class="app-container-toolbar">
+            {% include 'app/components/toolbar.html' %}
+        </div>
+        {% include 'app/components/pagination.html' %}
+        <div class="app-container-grid">
+
+            <div class="estate-grid">
+                <div class="row">
+                    <!-- single element -->
+                    {% for re in realestates %}
+                        {% with price_elem=re.price_set.first %}
+                        {% with address_elem=re.address_set.first %}
+                        {% with description=re.description %}
+                        <div class="col-xl-4 col-lg-6 col-12 mb-5">
+                            <div class="ratio-16-9">
+                                <div class="ratio-inner">
+                                    <a href="{% url 'estate' pk=re.pk %}" class="d-block w-100 h-100">
+                                        <div class="slider-container">
+                                            <div class="slider-elements">
+                                                {% with photo=re.photo_set.first %}
+                                                    {% if photo %}
+                                                        <div><img src="{{ photo.url }}"></div>
+                                                    {% endif %}
+                                                {% endwith %}
+                                            </div>
+                                            <div class="slider-overflow-content stable">
+                                                <div class="flex-grow-1"></div>
+                                                <div class="estate-grid-title">{{ re.title }}</div>
+                                                <div class="estate-grid-address">{{ address_elem|ext_getstrvalues|slice:"1:7"|ext_removeempty|join:", " }}</div>
+
+                                                {% if price_elem is not None %}
+                                                    <div class="estate-grid-data">
+                                                        <span class="me-auto">
+                                                            {{ price_elem.area }} м²
+                                                        </span>
+                                                        <span>
+                                                            {{ price_elem.price }}
+                                                        </span>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="slider-overflow-content-hover">
+                                                <div class="estate-grid-title small">{{ re.title }}</div>
+                                                <div class="estate-grid-address">{{ address_elem|ext_getstrvalues|slice:"1:7"|ext_removeempty|join:", " }}</div>
+                                                {% if address_elem.metro %}
+                                                    <div class="estate-grid-address d-flex align-items-center">
+                                                        <img class="icon-std" src="{% static 'square/icons/metro.svg' %}">
+                                                        <span class="ms-2">{{ address_elem.metro }}</span>
+                                                    </div>
+                                                {% endif %}
+                                                {% if description %}
+                                                    <div class="estate-grid-description">{{ description }}</div>
+                                                {% endif %}
+                                                <div class="flex-grow-1"></div>
+                                                {% if price_elem is not None %}
+                                                    <div class="estate-grid-data">
+                                                        <span class="me-auto">
+                                                            {{ price_elem.area }} м²
+                                                        </span>
+                                                        <span>
+                                                            {{ price_elem.price }}
+                                                        </span>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                    {% endfor %}
+                    <!-- end of single element  -->
+                </div>
+            </div>
+        </div>
+
+        {% include 'app/components/pagination.html' %}
+    </div>
+{% endblock %}

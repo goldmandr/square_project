@@ -1,0 +1,11 @@
+{% load static %}
+
+<header>
+    {% include 'components/header_cap.html' %}
+    <div class="header-back-link">
+        <a href="{% if back_link %}{{ back_link }}{% else %}{% url 'app' %}{% endif %}">
+            <span>{% if back_link %}назад{% else %}на главную{% endif %}</span>
+            <img src="{% static 'square/icons/arrow_back_main.svg' %}">
+        </a>
+    </div>
+</header>

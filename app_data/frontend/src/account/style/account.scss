@@ -1,0 +1,130 @@
+@import '../../square/style/assets/imports';
+
+.account {
+    &-content {
+        padding: 3rem 3.5rem 1.5rem 3.5rem;
+    }
+
+    &-container {
+       width: 100%;
+       max-width: 730px;
+       margin: 0 auto;
+    }
+
+    &-title {
+        font-family: 'GT Eesti Pro Display', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-align: center;
+
+        margin-bottom: 3.25rem;
+    }
+
+    &-border {
+        border: 1px solid $text_color_secondary;
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+
+    &-data-title {
+        font-family: 'GT Eesti Pro Display', sans-serif;
+        font-size: 1.75rem;
+        font-weight: 500;
+        text-align: left;
+
+        margin-bottom: 3rem;
+    }
+
+    &-field-title {
+        font-family: 'GT Eesti Pro Display', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+
+    &-field-text {
+        font-family: 'GT Eesti Pro Display', sans-serif;
+        font-weight: 500;
+        color: $text_color_variant;
+    }
+
+    &-pass-change-block {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    &-button-primary {
+        font-size: 1rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    &-logout {
+        color: $danger_color;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &-dialog-window {
+        position: relative;
+        padding: 2rem;
+    }
+
+    &-dialog-exit {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    &-dialog-title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+    }
+
+    &-form-fields {
+        margin-bottom: 2.25rem;
+
+        & > p {
+            margin-bottom: 1.5rem;
+        }
+
+        & label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        & input {
+            width: 100%;
+            padding: 0.5rem;
+            border-bottom: 2px solid $text_color_variant;
+            background-color: transparent;
+            color: $text_color;
+        }
+
+        & > .errorlist li {
+            color: $danger_color;
+            margin-bottom: 1rem;
+
+            &::before {
+                content: '* ';
+            }
+        }
+
+        & .helptext {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        & > ul {
+            font-size: 0.8rem;
+        }
+    }
+}
